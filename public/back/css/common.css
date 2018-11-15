@@ -1,7 +1,6 @@
 /*重置默认样式*/
 a{
     text-decoration: none;
-    color: #000;
 }
 
 a:link,
@@ -140,4 +139,8 @@ body{
 .content .head a i{
 
     line-height: 50px;
+}
+
+.content .breadcrumb{
+    margin-top: 20px;
 }
