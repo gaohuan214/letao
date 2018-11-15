@@ -144,3 +144,8 @@ body{
 .content .breadcrumb{
     margin-top: 20px;
 }
+
+/*模态框*/
+.modal-body{
+    color: #A94442;
+}

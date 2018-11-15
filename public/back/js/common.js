@@ -34,3 +34,14 @@
 
     })
 })
+
+
+//功能4: 模态框的显示与隐藏
+;$(function(){
+    // 点击顶部 bar 右侧按钮 ,模态框显示
+    $('.content .icon_right').click(function(){
+
+        $('#logoutModal').modal();
+
+    })
+})
