@@ -1,18 +1,19 @@
 
 // 功能1: 进度条功能
-;$(function(){
 
     // 全局ajax事件处理函数
     $(document).ajaxStart(function(){
         // 开启进度条
         NProgress.start();
-    })
+    });
 
     $(document).ajaxStop(function(){
-        // 结束进度条
-        NProgress.done();
+        setTimeout(function(){
+            // 结束进度条
+            NProgress.done();
+        },500)
     })
-});
+
 
 // 功能2: 侧边栏 点击分类管理部分显示隐藏
 ;$(function(){
@@ -49,6 +50,23 @@
 //功能5: 登出功能
 // 点击登出按钮,向后台提交登出请求
 ;$(function(){
-    
-})
+    $('#logout').click(function(){
+
+        $.ajax({
+            type: "get",
+            url: "/employee/employeeLogout",
+            dataType: "json",
+            success: function( info ){
+                if( info.success){
+                    //成功 ,返回登录页面
+                    location.href = "login.html";
+                }else if( info.error){
+                    alert('登出失败,请稍后重试');
+                }
+            }
+        })
+    })
+});
+
+
 
