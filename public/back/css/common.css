@@ -149,3 +149,10 @@ body{
 .modal-body{
     color: #A94442;
 }
+tr,th{
+    text-align: center;
+}
+.table.table-bordered td{
+
+    vertical-align: middle;
+}
