@@ -144,6 +144,14 @@ body{
 .content .breadcrumb{
     margin-top: 20px;
 }
+#echart_left,
+#echart_right{
+    height: 400px;
+    width: 45%;
+}
+
+
+
 
 /*模态框*/
 .modal-body{

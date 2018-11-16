@@ -60,12 +60,21 @@
             <li><a href="index.html"> 管理系统</a></li>
             <li class="active">首页</li>
         </ol>
+        <div id="echart_left" class="pull-left"></div>
+        <div id="echart_right" class="pull-right"></div>
     </div>
 
 </div>
 
 <!--modal部分-->
-<div class="modal fade" tabindex="-1" role="dialog" id="logoutModal">
+<!--参数说明:data-backdrop 模态框背景元素(布尔值,),指定一个静态(static)背景不关闭模态框的点击
+参数: Boolean或者'static',
+true: 有背景图,点击取消模态框
+false: 无背景
+static: 有背景图,点击不能取消模态框
+
+-->
+<div class="modal fade" tabindex="-1" role="dialog" id="logoutModal" data-backdrop="static">
     <div class="modal-dialog  modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,5 +99,6 @@
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/echarts/echarts.min.js"></script>
 <script src="./js/common.js"></script>
+<script src="./js/user.js"></script>
 </body>
 </html>
