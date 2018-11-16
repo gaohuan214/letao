@@ -1,72 +1,91 @@
 
-// 点击
-;$(function(){
-    // 初始化echart实例
 
-    var echart_l = echarts.init(document.getElementById('echart_left'));
-    // 指定图表的配置项和数据
-    var option1 = {
-        title: {
-            text: '2018年注册人数'
-        },
-        tooltip: {},
-        legend: {
-            data:['人数']
-        },
-        xAxis: {
-            data: ['1月','2月','3月','4月','5月','6月']
-        },
-        yAxis: {},
-        series: [{
-            name: '人数',
-            type: 'bar',
-            data: [500, 600, 1200,800, 1000,999],
-            //柱条的宽度,百分比,相对于x轴等分后的长度
-            barWidth: '50%'
-        }]
+$(function(){
+    var currentpage =1;
+    var pageSize = 5;
+
+    // 进入页面，获取第一屏数据
+    render();
+
+    //封装渲染的方法
+    function render(  ){
+        $.ajax({
+            type: 'get',
+            url: '/user/queryUser',
+            data: {
+                page: currentpage ,
+                pageSize: pageSize,
+            },
+            dataType: 'json',
+            success: function( info ){
+                console.log( info)
+
+                //将模板所需数据与模板结合
+                var str = template('tmp',info)
+                //    进行渲染
+                $('tbody').html(str);
+
+                var paginator = $('#bp-element');
+
+                options = {
+                    bootstrapMajorVersion:3, //对应的bootstrap版本
+                    currentPage: currentpage, //当前页数，这里是用的EL表达式，获取从后台传过来的值
+                    totalPages: Math.ceil(info.total/ info.size), //总页数，这里是用的EL表达式，获取从后台传过来的值
+
+                    // 为操作按钮添加点击事件
+                    onPageClicked:function(event, originalEvent, type,page){
+
+                         // 将page赋值给currentpage
+
+                         currentpage = page;
+
+                        // 进行渲染
+                        render();
+                    }
+                };
+                paginator.bootstrapPaginator(options);
+            }
+        });
     }
 
-    // 使用刚指定的配置项和数据显示图表。
-    echart_l.setOption(option1);
 
+   // 为操作按钮添加点击事件,用事件委托,
+    // 1. 点击操作按钮  模态框显示
+    // 2. 点击模态框 确认 按钮,发送ajax请求,重新渲染页面,关闭模态框
+    // 发送ajax请求更新用户信息
+   //  根据按钮颜色操作对应数据(id)
 
-    var echart_r = echarts.init(document.getElementById('echart_right'));
-    // 指定图表的配置项和数据
-    var option2 = {
-        title: {
-            text: '热门品牌销售',
-            subtext: '2017年6月',
-            left: 'center',
-        },
-        tooltip: {
-            //触发类型
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+    $('tbody').on('click','.btn',function(){
+       // 获取id
+        var id= $(this).parent().data('id');
 
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left',
-            data:['阿迪王','耐克','阿迪','新百伦','李宁']
-        },
+        var isDelete = $(this).hasClass('btn-danger')?0:1;
 
-        series: [{
-            name: '品牌',
-            type: 'pie',
-            center: ['50%','50%'],
-            radius: ['0','50%'],
-            data: [
-                {value:300,name:'阿迪王'},
-                {value:600,name:'阿迪'},
-                {value:620,name:'耐克'},
-                {value:900,name:'李宁'},
-                {value:760,name:'新百伦'},
+        // 显示模态框
+        $('#updateModal').modal( 'show')
 
-            ]
-        }]
-    };
+        $('#confirm').click(function(){
+            $.ajax({
+                type: 'post',
+                url: '/user/updateUser',
+                data:{
+                    id: id,
+                    isDelete: isDelete,
+                },
+                dataType: 'json',
+                success: function( info ){
 
-    // 使用刚指定的配置项和数据显示图表。
-    echart_r.setOption(option2);
+                    if( info.success){
 
+                        // 关闭模态框
+                        $('#updateModal').modal( 'hide')
+
+                        //重新渲染当前页
+                        render()
+                    }
+                }
+            })
+        })
+
+    })
 })
