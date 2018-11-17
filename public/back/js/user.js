@@ -18,14 +18,13 @@ $(function(){
             },
             dataType: 'json',
             success: function( info ){
-                console.log( info)
 
                 //将模板所需数据与模板结合
                 var str = template('tmp',info)
                 //    进行渲染
                 $('tbody').html(str);
 
-                var paginator = $('#bp-element');
+                var paginator = $('#paginator');
 
                 options = {
                     bootstrapMajorVersion:3, //对应的bootstrap版本

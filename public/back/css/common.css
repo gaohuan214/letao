@@ -20,7 +20,9 @@ li{
 }
 
 
-
+.mt_20{
+    margin-top: 20px;
+}
 .body_bg{
     background-color: #222D32;
 }
@@ -141,16 +143,11 @@ body{
     line-height: 50px;
 }
 
-.content .breadcrumb{
-    margin-top: 20px;
-}
 #echart_left,
 #echart_right{
     height: 400px;
     width: 45%;
 }
-
-
 
 
 /*模态框*/
