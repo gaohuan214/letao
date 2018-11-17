@@ -59,10 +59,15 @@
     // 点击选中下拉框中元素(事件委托),同步给按钮
     $('.dropdown-menu').on('click','li a',function(){
 
+        // 赋值给按钮文本
         var txt=$(this).text();
         $('.tips').text(txt);
-        var id=$(this).data('id')
+
+        // 赋值给隐藏域
+        var id=$(this).data('id');
         $("[class='tips']").val(id);
+        //触发input事件,动态改变校验状态
+        $("[class='tips']").trigger('input');
     })
 
     // 点击上传文件按钮,利用文件上传插件获取文件地址
@@ -76,6 +81,10 @@
             $('img.upload').attr("src",src);
 
             $('[name="brandLogo"]').val(src);
+            //触发input事件,动态改变校验状态
+            $('[name="brandLogo"]').trigger('input');
+        //    或者手动更新校验状态
+
         }
     })
 
@@ -130,9 +139,17 @@
             data: $('#form').serialize(),
             dataType: 'json',
             success: function( info ){
-                console.log(info)
+                // console.log(info)
                 if(info.success){
+                    //关闭模态框并重置表单
                     $('#addModal').modal('hide');
+
+                    $('#form').data('bootstrapValidator').resetForm( true);
+                    // 重置img图片
+                    var src=$('img.upload').data('src');
+                    $('img.upload').attr('src',src);
+                    //重置按钮文本
+                    $('.tips').text('请选择一级分类按钮')
                     render();
 
                 }
