@@ -10,7 +10,9 @@ $(document).ajaxStart(function(){
 //ajaxStop在ajax请求结束后触发(所有ajax请求结束)
 $(document).ajaxStop(function(){
     //关闭进度条
-    NProgress.done();
+    setTimeout(function(){
+        NProgress.done();
+    },1000)
 })
 
 // 功能2: 侧边栏分类管理,隐藏列表显示

@@ -123,6 +123,14 @@ a:active {
   font-size: 18px;
 }
 .modal-body i,
-.modal-body sapn {
+.modal-body span {
   color: #A94442;
+}
+table th,
+table td {
+  text-align: center;
+}
+table.table > thead > tr > th,
+table.table > tbody > tr > td {
+  vertical-align: middle;
 }
