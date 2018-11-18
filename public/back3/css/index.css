@@ -1,0 +1,9 @@
+
+#echart_left,
+#echart_right{
+    width: 48%;
+    height: 400px;
+}
+#echart_right{
+    margin-left: 4%;
+}
