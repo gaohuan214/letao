@@ -33,3 +33,31 @@ $(document).ajaxStop(function(){
         $('.lt_content').toggleClass('hide_menu');
     })
 })
+ // 功能4：点击头topbar右侧按钮,显示退出模态框
+;$(function(){
+    $('.topbar .icon_right').click(function(){
+
+        $('#logoutModal').modal('show');
+    })
+})
+// 功能5:点击退出按钮,发送ajax请求(退出),成功后
+//     1.模态框隐藏
+//     2.跳转到登录页
+;$(function(){
+    $('.btn-logout').click(function(){
+        $.ajax({
+            type: 'get',
+            url: '/employee/employeeLogout',
+            dataType: 'json',
+            success: function( info){
+                console.log(info )
+                if( info.success){
+                    //关闭模态框
+                    $('#logoutModal').modal('hide');
+                    // 跳转到登录首页
+                    location.href = "login.html";
+                }
+            }
+        })
+    })
+})
