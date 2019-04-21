@@ -1,100 +1,103 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
     <link rel="stylesheet" href="./css/common.css">
-    <title>乐淘商城</title>
+    <title>淘购商城</title>
 </head>
-<body >
-<!--侧边栏-->
-<div class="lt_aside">
-    <!--标题-->
-    <div class="brand">
-        <a href="#">黑马19期</a>
+
+<body>
+    <!--侧边栏-->
+    <div class="lt_aside">
+        <!--标题-->
+        <div class="brand">
+            <a href="#">黑马19期</a>
+        </div>
+        <!--头像-->
+        <div class="pro_picture">
+            <img src="./images/default.png" alt="">
+            <p>超级管理员</p>
+        </div>
+        <!--导航-->
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="user.html">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>用户管理</span>
+                    </a>
+                </li>
+                <li class="categories">
+                    <a href="javascript:">
+                        <i class="glyphicon glyphicon-list"></i>
+                        <span>分类管理</span>
+                    </a>
+                    <div class="category" style="display: block">
+                        <a href="first.html" class="current">一级分类</a>
+                        <a href="second.html">二级分类</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html">
+                        <i class="glyphicon glyphicon-tags"></i>
+                        <span>商品管理</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!--头像-->
-    <div class="pro_picture">
-        <img src="./images/default.png" alt="">
-        <p>超级管理员</p>
+    <!--左侧内容-->
+    <div class="lt_content">
+        <div class="topbar">
+            <a class="icon_left pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
+            <a class="icon_right pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
+        </div>
+        <div class="container-fluid">
+            <ol class="breadcrumb mg_tp">
+                <li><a href="index.html">管理系统</a></li>
+                <li class="active">首页</li>
+            </ol>
+
+
+        </div>
     </div>
-    <!--导航-->
-    <div class="nav">
-        <ul>
-            <li>
-                <a href="user.html">
-                    <i class="glyphicon glyphicon-user"></i>
-                    <span>用户管理</span>
-                </a>
-            </li>
-            <li class="categories">
-                <a href="javascript:">
-                    <i class="glyphicon glyphicon-list"></i>
-                    <span>分类管理</span>
-                </a>
-                <div class="category" style="display: block">
-                    <a href="first.html" class="current">一级分类</a>
-                    <a href="second.html">二级分类</a>
+
+    <!--登出模态框-->
+
+    <div class="modal fade" tabindex="-1" id="logoutModal" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
                 </div>
-            </li>
-            <li>
-                <a href="product.html">
-                    <i class="glyphicon glyphicon-tags"></i>
-                    <span>商品管理</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-<!--左侧内容-->
-<div class="lt_content">
-    <div class="topbar">
-        <a class="icon_left pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
-        <a class="icon_right pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
-    </div>
-    <div class="container-fluid">
-        <ol class="breadcrumb mg_tp">
-            <li><a href="index.html">管理系统</a></li>
-            <li class="active">首页</li>
-        </ol>
-
-
-    </div>
-</div>
-
-<!--登出模态框-->
-
-<div class="modal fade" tabindex="-1" id="logoutModal" data-backdrop="static">
-    <div class="modal-dialog modal-sm" >
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" ><span >&times;</span></button>
-                <h4 class="modal-title">温馨提示</h4>
-            </div>
-            <div class="modal-body">
-                <i class="glyphicon glyphicon-info-sign"></i>
-                <span>您确定要退出后台管理系统吗？</span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary btn-logout">退出</button>
+                <div class="modal-body">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                    <span>您确定要退出后台管理系统吗？</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary btn-logout">退出</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
-<script src="./lib/jquery/jquery.min.js"></script>
-<script src="./js/isLogin.js"></script>
-<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-<!--引入进度条插件-->
-<script src="./lib/nprogress/nprogress.js"></script>
-<script src="./js/common.js"></script>
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./js/isLogin.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <!--引入进度条插件-->
+    <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./js/common.js"></script>
 </body>
+
 </html>
